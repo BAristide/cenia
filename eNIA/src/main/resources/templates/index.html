@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymelaef.org">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta http-equiv="refresh" content="1000">
+  <meta name="author" content="Bekroundjo Akoley Aristide"> 
+<link rel="stylesheet" type="text/css"   th:href="@{/webjars/bootstrap/4.1.3/css/bootstrap.min.css}"> 
+<link   rel="stylesheet" th:href="@{/css/fontawesome-free/css/all.min.css}"  >
+   <link rel="shortcut icon" th:href="@{/assets/icone.ico}">
+ 
+ <script th:src="@{/webjars/jquery/3.4.1/jquery.min.js}"></script> 
+  <script th:src="@{/vendor/bootstrap/js/bootstrap.bundle.min.js}"></script>
+
+  <!-- Core plugin JavaScript-->
+  <script th:src="@{/vendor/jquery-easing/jquery.easing.min.js}"></script>
+  <link   rel="stylesheet" th:href="@{/css/style.css}"  > 
+<title>eNIA | [[#{app.index.title}]]</title>
+</head>
+
+<body>
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg   navbar-dark bg-dark  bg-dark2  ">
+    <div class="container">
+      <a class="navbar-brand" th:href="@{/}">eNIA</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        <span sec:authentication="name"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+                  
+                      
+          
+          <li class="nav-item ">
+          <a class="nav-link myColor" th:href="@{?lang=en}">
+                    <img  th:src="@{/assets/us_flag.png}">&nbsp; &nbsp;<span class="myColor">English</span>
+                </a> </li>
+          <li class="nav-item myColor">
+       <a class="nav-link" th:href="@{?lang=fr}">
+                    <img  th:src="@{/assets/fr_flag.png}"> &nbsp; &nbsp;<span class="myColor">Français</span>
+                </a>
+          </li>
+          
+           
+          <li class="nav-item myColor">
+            <a class="nav-link" th:href="@{/user/adminDashBoard}">
+            <i class="fa fa-cogs myColor" aria-hidden="true"></i> &nbsp;<span class="myColor">[[#{menu.admin}]]</span></a>
+          </li>
+           
+        </ul>
+      </div>
+    </div>
+  </nav>
+ 
+  <!-- Page Content -->
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12 text-center">
+        <h1 class="mt-5">[[#{app.title}]]</h1>
+        <p class="lead">[[#{app.index.title}]]</p>
+         
+      </div>
+    </div>
+    
+  
+  </div>
+  <div class="container">
+  <section class="row justify-content-center">
+ 
+   
+  <div th:if="${not #lists.isEmpty(listFiches)}">
+  
+  
+  <table  >
+    <tr  th:each="p:${listFiches}">
+      <td >
+       
+      </td>
+      <td>
+      <div  class="mySpeRiPadding">
+      <table class="table bg-white table-borderless  roundedraduis mySpeRiPadding">
+          <tr  >
+          
+            <td   >    <span class="myFontIntroDesign"> Incident sur <span th:text="${p.servicesPlateformes[0].name}"></span> &nbsp;&nbsp;&nbsp; Début&nbsp;<span  th:text=  "${#dates.format(p.creationDate, 'HH:mm dd/MM')}"></span></span>
+            
+            <br>
+            <span class="myFontDesign">Résumé:  <span th:text="${p.titre}"></span></span>
+            
+             
+           
+            
+            </td>
+          </tr>
+           
+          <tr> 
+            <td class="tablecontent"   > 
+            <p class="myFontDesign"><span>Descriptif: <br> </span> <span class="text-justify" th:utext="${p.description}"></span></p> 
+            
+            </td>
+          </tr>
+                 
+             
+        </table>
+  </div>
+        <div class="mySpeLefPadding">
+        <table class="table mySpeLefPadding tablex table-borderless">
+         <tr>
+         <td th:if="${not #lists.isEmpty(p.etaAvcMent)}">
+         <p class="font-weight-bold font-italic text-right">Etat d'avancement</p>
+         </td>
+         </tr>
+    <tr  th:each="pSub:${p.etaAvcMent}"  >
+       
+      <td class="nPadding" >
+        <table class="tableWidth tablex">
+          <tr class="noPadding"> 
+            
+            <td  class="nPadding chatDecorate"> 
+            <p class="text-right myFontDesign" ><span class="roundedraduis"><span th:text="${#dates.format(pSub.creationDate, 'HH:mm dd/MM')}" ></span> <br><span th:utext="${pSub.libelle}"></span></span>  </p>
+            
+            </td>
+            
+          </tr>
+           
+                  
+        </table>
+      </td>
+  </tr>
+  </table>
+        </div>
+     
+          
+   <hr  >
+      </td>
+         
+  </tr>
+  </table>
+  
+  </div>
+  </section>
+  
+ 
+    <div th:if="${#lists.isEmpty(listFiches)}">
+   Nous n'avons aucun incident en cours ...
+	</div>
+  
+    
+         <table class="bg-white  roundedraduis">
+          <tr>
+          <th class="tabletotaldef tablecontent myFontDesign">Total incident en cours</th> 
+            <td class="tablecontent"  th:text="${totalFI}" ></td>
+          </tr>
+          <tr>
+          <th class="tabletotaldef tablecontent myFontDesign" >Total problème en cours</th> 
+            <td  class="tablecontent" th:text="${totalFP}" > 
+            </td>
+          </tr>
+                   
+        </table>
+    
+    </div>
+    
+    
+    
+ 
+ 
+ 
+     <footer class="sticky-footer">
+        <div class="container my-auto">
+          <div class="copyright text-center my-auto">
+            <span>Copyright &copy; eNIA 2020</span>
+          </div>
+        </div>
+      </footer>
+ 
+   
+</body>
+
+</html>

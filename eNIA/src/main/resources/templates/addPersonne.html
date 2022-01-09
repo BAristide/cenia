@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymelaef.org"
+xmlns:layout="http://www.ultraq.nz/thymeleaf/layout"
+	layout:decorate="template">
+<head>
+  <meta charset="utf-8">
+ <meta id="_csrf" name="_csrf" th:content="${_csrf.token}" />
+<meta id="_csrf_header" name="_csrf_header"
+	th:content="${_csrf.headerName}" />
+ 
+<title>eNIA | Nouvel utilisateur</title>
+</head>
+
+<body>
+  
+  
+  <div layout:fragment="content1">
+ 	<br> <br>
+		<div class="container-fluid">
+
+			<section class="row justify-content-center">
+
+
+				 
+
+					<form>
+				
+				
+				<div class="form-group row">
+								<div class="col-sm-6 mb-3 mb-sm-0">
+									<div class="form-group">
+										<label class="control-label">Civilité</label> <br> <select
+											class="form-control" id="priority">
+											<option value="1">Monsieur</option>
+											<option value="2">Madame</option>
+											<option value="3">Mademoiselle</option>
+
+										</select>
+									</div>
+
+								</div>
+
+								<div class="col-sm-6 mb-3 mb-sm-0">
+									<div class="form-group">
+										<label class="control-label">Matricule</label> <input
+											class="form-control" value="MSQB7628" type="text" id="matricule" name="matricule">
+									</div>
+
+								</div>
+
+							</div>
+							<div class="form-group row">
+								<div class="col-sm-12 mb-3 mb-sm-0">
+									<div class="form-group">
+										<label class="control-label">Password</label> <input
+											class="form-control"   type="password" id="password"
+											name=""password"" value="K@blan2020" required="required">
+									</div>
+
+								</div>
+
+							</div>
+							<div class="form-group row">
+								<div class="col-sm-12 mb-3 mb-sm-0">
+									<div class="form-group">
+										<label class="control-label">Nom de famille</label> <input
+											class="form-control"   type="text" id="lastName"
+											name="lastName" value="KONAN" required="required">
+									</div>
+
+								</div>
+
+							</div>
+
+							<div class="form-group row">
+								<div class="col-sm-12 mb-3 mb-sm-0">
+									<div class="form-group">
+										<label class="control-label">Prénom(s)</label> <input
+											class="form-control" value="Isabelle"  required="required"  type="text" id="firstName"
+											name="firstName">
+									</div>
+
+								</div>
+
+							</div>
+							
+														<div class="form-group row">
+								<div class="col-sm-12 mb-3 mb-sm-0">
+									<div class="form-group">
+										<label class="control-label">Fonction</label> <input
+											class="form-control" value="Chargé de pilotage" required="required"  type="text" id="fonction"
+											name="fonction">
+									</div>
+
+								</div>
+
+							</div>
+
+
+							<div class="form-group row">
+								<div class="col-sm-12 mb-3 mb-sm-0">
+									<div class="form-group">
+										<label class="control-label">Lieu
+											d'habitation(Adresse)</label> <input class="form-control" type="text"
+											id="lieuHabitation" required="required" value="Casa"   name="lieuHabitation">
+									</div>
+
+								</div>
+
+							</div>
+
+
+							<div class="form-group row">
+								<div class="col-sm-6 mb-3 mb-sm-0">
+									<div class="form-group">
+										<label class="control-label">Contact 1 (télephonique)</label>
+										<input required="required" value="090323" class="form-control" type="text" id="contact1"
+											name="contact1">
+									</div>
+
+								</div>
+								<div class="col-sm-6 mb-3 mb-sm-0">
+									<div class="form-group">
+										<label class="control-label">Contact 2 (télephonique)</label>
+										<input class="form-control" value="0903" type="text" id="contact2"
+											name="contact2">
+									</div>
+
+								</div>
+
+							</div>
+
+
+							<div class="form-group row">
+								<div class="col-sm-6 mb-3 mb-sm-0">
+									<div class="form-group">
+										<label class="control-label">Equipe</label> <br> <select required="required"
+											class="form-control" id="equipeId">
+											<option value="0"></option>
+											<option th:each="equipesList : ${equipesList}"
+												th:value="${equipesList.id}"
+												th:text="${equipesList.nom}"></option>
+										</select>
+									</div>
+
+								</div>
+								 
+								 								<div class="col-sm-6 mb-3 mb-sm-0">
+									<div class="form-group">
+										<label class="control-label">Email</label> <input
+											class="form-control" type="email" id="email" value="bekroundjo@live.fr" name="email">
+									</div>
+
+								</div>
+							</div>
+
+							 
+
+
+							 
+
+ 
+
+
+
+
+
+
+							<div class="form-group row">
+								<div class="col-sm-12 mb-6 mb-sm-0">
+
+									<div class="form-group">
+										<label class="control-label">Commentaire (Optionnel)</label>
+
+										<textarea class="form-control"  rows="5" id="comment"
+											name="comment" >
+															</textarea>
+
+									</div>
+
+								</div>
+							</div>
+
+
+<div class="form-group row">
+								<div class="col-sm-6 mb-3 mb-sm-0">
+									<div class="form-group">
+										<label class="control-label">Acces Web</label> <br> <select required="required"
+											class="form-control" id="acces">
+											<option value="0">No</option>
+											<option value="1">Yes</option>
+											 
+										</select>
+									</div>
+
+								</div>
+								 
+								 	 
+							</div>
+
+							 
+
+
+
+
+
+
+
+
+
+
+
+
+							<div class="form-group row">
+								<div class="col-sm-6 mb-3 mb-sm-0"></div>
+								<div class="col-sm-6">
+								<input id="postRequest" class="btn btn-secondary btn-block" value="Submit"/>
+									 
+
+								</div>
+							</div>
+				
+				</form>
+
+ 
+    
+
+			</section>
+
+
+
+
+  <div id="postResultDiv" align="center"></div>
+			<div id="postResultMessageDiv" align="center"></div>
+
+
+		</div>
+		
+		
+		
+		
+	       <script th:inline="javascript">
+		$(function() { 
+			var token = $('#_csrf').attr('content');
+			var header = $('#_csrf_header').attr('content');
+			console.log(token);
+			// request SAVE service
+			$("#postRequest").click(function(event) {
+				// Prevent the form from submitting via the browser.
+				event.preventDefault();
+				
+				if($("#lastName").val()==''){
+					alert("Please fill the domaine field !");
+				}else{
+				 
+					 
+				 ajaxPost();
+				 
+				}
+				
+			});
+
+			function ajaxPost() {
+
+				// PREPARE FORM DATA
+			 
+	var formData = {
+			password : $("#password").val(),
+			lastName : $("#lastName").val(),
+			firstName : $("#firstName").val(),
+			matricule : $("#matricule").val(),
+			email : $("#email").val(),
+			lieuHabitation : $("#lieuHabitation").val(),
+			contact1 : $("#contact1").val(),
+			contact2 : $("#contact2").val(),
+			acces : $("#acces").val(),
+			fonction : $("#fonction").val(),
+			
+			equipes :[ {id : $("#equipeId").val()
+				
+            }]
+      }
+				console.log(formData);
+
+				var token = $('#_csrf').attr('content');
+				var header = $('#_csrf_header').attr('content');
+				console.log(token);
+				// DO POST
+				$.ajax({
+							type : "POST",
+							contentType : "application/json",
+							url : "/eNIA/personne",
+							data : JSON.stringify(formData),
+							dataType: "html",
+
+							beforeSend : function(xhr) {
+								xhr.setRequestHeader(header, token);
+							},
+						success : function(result) {
+
+
+							if (result == 'true') {
+								$("#postResultDiv").html(
+										" OK Successfully Saved! <br>"
+												+ "---> Congrats !!"
+												+ "</p>");
+								$("#postResultMessageDiv").html("");
+								$("#lastName").val('');
+								$("#firstName").val('');
+								$("#matricule").val('');
+								$("#email").val('');
+								//	$("#postResultSuccess").show();
+
+							} else if (result == 'false') {
+								$("#postResultDiv").html("");
+
+								$("#postResultMessageDiv")
+										.html(
+												"<strong>Désolé cet email existe déjà</strong><br>");
+							} else {
+								$("#postResultDiv").html("");
+
+								$("#postResultMessageDiv")
+										.html(
+												"<strong>Il y a eu une erreur lors de la création</strong><br>");
+
+							}
+							console.log(result);
+						},
+							error : function(e) {
+							 
+								alert("Error!")
+								console.log("ERROR: ", e);
+							}
+						});
+
+			}
+			
+	//------------------------------------------		
+ 
+			
+		});
+	</script>
+
+</div>
+  
+
+ 
+    
+     
+ 
+ 
+ 
+ 
+ 
+
+</body>
+
+</html>

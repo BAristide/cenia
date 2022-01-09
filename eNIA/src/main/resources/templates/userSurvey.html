@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymelaef.org">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta http-equiv="refresh" content="1000">
+  <meta name="author" content="Bekroundjo Akoley Aristide"> 
+<link rel="stylesheet" type="text/css"   th:href="@{/webjars/bootstrap/4.1.3/css/bootstrap.min.css}"> 
+<link   rel="stylesheet" th:href="@{/css/fontawesome-free/css/all.min.css}"  >
+   <link rel="shortcut icon" th:href="@{/assets/icone.ico}">
+ 
+ <script th:src="@{/webjars/jquery/3.4.1/jquery.min.js}"></script> 
+  <script th:src="@{/vendor/bootstrap/js/bootstrap.bundle.min.js}"></script>
+
+  <!-- Core plugin JavaScript-->
+  <script th:src="@{/vendor/jquery-easing/jquery.easing.min.js}"></script>
+ 
+<title>eNIA | [[#{app.index.title}]]</title>
+</head>
+
+<body>
+
+
+<div class="container"> 
+
+  <section> <h1>Customer statisfaction survey</h1></section>
+  
+  <section>  <h4 class="font-weight-bold">Merci</h4>  <p>de prendre part à notre enquete de satisfaction client. Cette enquete prendra moins d'un minute de votre temps <br>
+  Nous vous prions de valider vos réponse à la fin de l'enquete en cliquant su rle boutton Envoyer
+  
+   </p>  </section>
+   
+   <form  th:action="@{/userSurveySubmit}"  method="get">
+   
+   <section><h3> Comment avez trouvez la gestion de la communication durant cet incident</h3> <br>
+   
+   <div class="form-check">
+  <input class="form-check-input" type="radio"   th:name="qest1Radios" id="qest1Radio1" value="10" >
+  <label class="form-check-label" for="qest1Radio1">
+  très satisfait 
+  </label>
+</div>
+<div class="form-check">
+  <input class="form-check-input" type="radio"    th:name="qest1Radios" id="qest1Radio2" value="7">
+  <label class="form-check-label" for="qest1Radio2">
+     satisfait
+  </label>
+</div>
+
+<div class="form-check">
+  <input class="form-check-input" type="radio"    th:name="qest1Radios" id="qest1Radio3" value="5">
+  <label class="form-check-label" for="qest1Radio3">
+     neutre
+  </label>
+</div>
+
+<div class="form-check">
+  <input class="form-check-input" type="radio"  th:name="qest1Radios" id="qest1Radio4" value="3">
+  <label class="form-check-label" for="qest1Radio4">
+     Pas satisfait
+  </label>
+</div>
+
+<div class="form-check">
+  <input class="form-check-input" type="radio"  th:name="qest1Radios" id="qest1Radio5" value="1">
+  <label class="form-check-label" for="qest1Radio5">
+     très insatisfait
+  </label>
+</div>
+ 
+   
+    </section>
+
+
+
+   <section><h3> Comment juger la qualité de l'information partagé lors de l'incident</h3> <br>
+   
+   <div class="form-check">
+  <input class="form-check-input" type="radio"   th:name="qest2Radios" id="qest2Radio1" value="10" >
+  <label class="form-check-label" for="qest2Radio1">
+  très satisfait 
+  </label>
+</div>
+<div class="form-check">
+  <input class="form-check-input" type="radio"   th:name="qest2Radios" id="qest2Radio2" value="7">
+  <label class="form-check-label" for="qest2Radio2">
+     satisfait
+  </label>
+</div>
+
+<div class="form-check">
+  <input class="form-check-input" type="radio" th:name="qest2Radios" id="qest2Radio3" value="5">
+  <label class="form-check-label" for="qest2Radio3">
+     neutre
+  </label>
+</div>
+
+<div class="form-check">
+  <input class="form-check-input" type="radio" th:name="qest2Radios" id="qest2Radio4" value="3">
+  <label class="form-check-label" for="qest2Radio4">
+     Pas satisfait
+  </label>
+</div>
+
+<div class="form-check">
+  <input class="form-check-input" type="radio"   th:name="qest2Radios" id="qest2Radio5" value="1">
+  <label class="form-check-label" for="qest2Radio5">
+     très insatisfait
+  </label>
+</div>
+ 
+   
+    </section>
+   <input class="form-control" type="hidden"
+							 id="idPersonne"
+							   th:name="idPersonne"   th:value="${uId}"    >
+							
+							 <input class="form-control" type="hidden"
+							    th:value="${isId}" th:name="idIssue"       >
+
+<br>
+
+  
+<br>
+<p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
+</form>
+
+</div>
+   
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+ 
+ 
+ 
+     <footer class="sticky-footer">
+        <div class="container my-auto">
+          <div class="copyright text-center my-auto">
+            <span>Copyright &copy; eNIA 2020</span>
+          </div>
+        </div>
+      </footer>
+ 
+   
+</body>
+
+</html>

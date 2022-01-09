@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments :: head">
+    </head>
+<body>
+<div class="container" id="top">
+    <nav th:replace="fragments :: top-nav"></nav>
+
+
+    <div class="row justify-content-center">
+        <div class="card border-primary col-sm-8 bg-light">
+            <div class="card-body text-dark mb-3">
+                <h1 class="text-center">Incident Management System</h1>
+                <h2 class="text-center">Administrative Functions</h2>
+                <div class="row justify-content-center">
+                    <div class="message col-md-6">
+                        <p class="text-center" th:text="${date}">Tuesday February 12, 2018</p></hr>
+                        <h3 class="text-center">Select Action</h3>
+                        <div class="text-center">
+                            <p class="text-center" style="color: red;" th:text="${message}"></p>
+                            <div class="dropdown d-inline-block">
+                                <button class="btn btn-outline-primary dropdown-toggle" type="button" data-toggle="dropdown">Add</button>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item" href="category/add">Category</a>
+                                    <a class="dropdown-item" href="group/add">Group</a>
+                                    <a class="dropdown-item" href="severity/add">Severity</a>
+                                    <a class="dropdown-item" href="user/add">User</a>
+                                    <a class="dropdown-item" href="carrier/add">Carrier</a>
+                                </div>
+                            </div>
+
+                            <div class="dropdown d-inline-block">
+                                <button class="btn btn-outline-primary dropdown-toggle" type="button" data-toggle="dropdown">Update</button>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item" href="category/update">Category</a>
+                                    <a class="dropdown-item" href="group/update">Group</a>
+                                    <a class="dropdown-item" href="severity/update">Severity</a>
+                                    <a class="dropdown-item" th:href="@{user/list}">User</a>
+                                    <a class="dropdown-item" th:href="@{carrier/update}">Carrier</a>
+                                </div>
+                            </div>
+
+                            <div class="dropdown d-inline-block">
+                                <button class="btn btn-outline-primary dropdown-toggle" type="button" data-toggle="dropdown">Delete</button>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item" href="category/delete">Category</a>
+                                    <a class="dropdown-item" href="group/delete">Group</a>
+                                    <a class="dropdown-item" href="severity/delete">Severity</a>
+                                    <a class="dropdown-item" th:href="@{user/delete}">User</a>
+                                    <a class="dropdown-item" th:href="@{carrier/delete}">Carrier</a>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+
+
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

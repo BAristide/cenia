@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymelaef.org"
+xmlns:layout="http://www.ultraq.nz/thymeleaf/layout"
+	layout:decorate="template">
+<head>
+  <meta charset="utf-8">
+ <meta id="_csrf" name="_csrf" th:content="${_csrf.token}" />
+<meta id="_csrf_header" name="_csrf_header"
+	th:content="${_csrf.headerName}" />
+ 
+<title>eNIA | Liste des personne</title>
+</head>
+
+<body>
+  
+  
+  <div layout:fragment="content1">
+ 	<br> <br>
+		<div class="container-fluid" th:if="${not #lists.isEmpty(listePersonne)}">
+
+			<section class="row justify-content-center">
+
+ 
+			 <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                  <thead>
+                    <tr>
+                      <th>ID</th>
+                      <th>Nom</th>
+                      <th>Email</th> 
+                      <th>Acces Web</th>
+                      <th>Associer</th>
+                     
+                    </tr>
+                  </thead>
+                  <tfoot>
+                    <tr>
+                   <th>ID</th>
+                      <th>Nom</th>
+                      <th>Email</th> 
+                      <th>Acces Web</th>
+                      <th>Associer</th>
+                    </tr>
+                  </tfoot>
+                  <tbody>
+                  
+                  	<tr th:each="p:${listePersonne}">
+						<td th:text="${p.id}"></td>
+						<td th:text="${p.lastName}"></td>
+						<td th:text="${p.email}"></td>
+						
+						<td th:if="${p.acces == 0}">Non</td>
+						<td th:if="${p.acces == 1}">Oui</td>
+						 
+						 
+						<td>
+						<a class="btn btn-secondary"  th:href="@{/admin/accesProfil(id=${p.id},email=${p.email},acces=${p.acces})}">Acces</a>
+						</td>	
+						 				
+					</tr>
+               
+                  </tbody>
+                </table>
+                <nav >
+              <ul   class="pagination">
+				<li  th:each="page,status:${pages}"  th:class="${currentPage==status.index}?'page-item active':'page-item'">
+				<a th:class="${currentPage==status.index}?'page-link active':'page-link'"  th:href="@{/admin/listePersonne(page=${status.index})}" th:text="${status.index}"></a>
+				</li>
+				</ul>
+				</nav>
+              </div>
+
+ 
+
+			</section>
+
+
+
+
+ 
+
+
+		</div>
+		
+		<div th:if="${#lists.isEmpty(listePersonne)}">
+   Nous n'avons aucun incident en cours ...
+					</div>
+		
+		 
+
+</div>
+  
+
+ 
+    
+     
+ 
+ 
+ 
+ 
+ 
+
+</body>
+
+</html>

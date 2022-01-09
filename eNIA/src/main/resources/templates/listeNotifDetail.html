@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymelaef.org"
+xmlns:layout="http://www.ultraq.nz/thymeleaf/layout"
+	layout:decorate="template">
+<head>
+  <meta charset="utf-8">
+ <meta id="_csrf" name="_csrf" th:content="${_csrf.token}" />
+<meta id="_csrf_header" name="_csrf_header"
+	th:content="${_csrf.headerName}" />
+ 
+<title>eNIA | Personne notif détail</title>
+</head>
+
+<body>
+  
+  
+  <div layout:fragment="content1">
+ 	<br> <br>
+		 
+
+			<section class="row justify-content-center">
+			
+			
+			
+			
+			
+<section class="col-12 col-sm-6 col-md-6">
+ 
+<p>Les applications pour lesquelles <span th:text="${personneNotDetail.lastName}"></span> a soucrient sont:</p> <br>
+ 
+			 <div class="table-responsive">
+                <table class="table table-bordered"  >
+                  <thead>
+                    <tr>
+                      <th>ID</th>
+                      <th>Application name</th>
+                     
+                    </tr>
+                  </thead>
+                  <tfoot>
+                    <tr>
+                   <th>ID</th>
+                      <th>Application name</th>
+                      
+                    </tr>
+                  </tfoot>
+                  <tbody>
+                  
+                  	<tr th:each="p:${personneNotDetail.serPlateNotif}">
+						<td th:text="${p.id}"></td>
+						<td th:text="${p.name}"></td>
+						 	
+						 				
+					</tr>
+               
+                  </tbody>
+                </table>
+                <nav >
+              <ul   class="pagination">
+				<li  th:each="page,status:${pages}"  th:class="${currentPage==status.index}?'page-item active':'page-item'">
+				<a th:class="${currentPage==status.index}?'page-link active':'page-link'"  th:href="@{/admin/listePersonne(page=${status.index})}" th:text="${status.index}"></a>
+				</li>
+				</ul>
+				</nav>
+              </div>
+
+ </section>
+
+			</section>
+
+
+
+
+ 
+
+
+		 
+		
+		
+		 
+
+</div>
+  
+
+ 
+    
+     
+ 
+ 
+ 
+ 
+ 
+
+</body>
+
+</html>

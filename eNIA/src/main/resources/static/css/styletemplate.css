@@ -1,0 +1,25 @@
+.table-dark {
+ 
+  color: #6B6B6B;
+ 
+  background-color: #fff;
+ 
+}
+ 
+ 
+ 
+.table-dark th,
+ 
+.table-dark td,
+ 
+.table-dark thead th {
+ 
+  border-color: #EEE;
+ 
+}
+
+.table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
+  background-color: #6060A0;
+  color: #fff;
+  
+}

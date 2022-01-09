@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymelaef.org"
+	xmlns:layout="http://www.ultraq.nz/thymeleaf/layout"
+	layout:decorate="template">
+<head>
+<meta charset="utf-8">
+<meta id="_csrf" name="_csrf" th:content="${_csrf.token}" />
+<meta id="_csrf_header" name="_csrf_header"
+	th:content="${_csrf.headerName}" />
+	<!-- include summernote css/js -->
+<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/css/bootstrap-select.css" />
+
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/js/bootstrap-select.min.js"></script>
+<title>Déclaration d'incident</title>
+</head>
+
+<body>
+
+
+	<div layout:fragment="content1">
+	
+	
+	
+	<section id="cover" class="min-vh-100">
+    <div id="cover-caption">
+        <div class="container">
+            <div class="row ">
+          
+                  Création Result
+            </div>
+        </div>
+    </div>
+</section>
+
+		<br> <br>
+		
+		 <script>
+		 $(document).ready(function() {
+			  $('#description').summernote(
+					  {
+					      height: 200
+					});
+			   
+			});
+		 
+
+</script>
+ 
+
+
+		<script th:inline="javascript">
+			$(function() {
+				
+			    var values = $('equipeId').serialize();
+			    console.log (values);       // See if you get the serialized data in console.
+				var token = $('#_csrf').attr('content');
+				var header = $('#_csrf_header').attr('content');
+				console.log(token);
+				// request SAVE service
+				$("#postRequest").click(function(event) {
+					// Prevent the form from submitting via the browser.
+					event.preventDefault();
+
+					if ($("#titre").val() == '') {
+						alert("Please fill the domaine field !");
+					} else {
+
+						ajaxPost();
+
+					}
+
+				});
+
+				function ajaxPost() {
+
+					// PREPARE FORM DATA
+					
+					
+					var valuesArray = $('select[name=equipeId]').val()
+					if ($("#type").val() == 1) {
+						var formData = {
+
+								titre : $("#titre").val(),
+								description : $("#description").val(),
+								type : "FI",
+
+							equipes : [ {
+								id : 5
+								
+
+							} ]
+						}
+					} else {
+
+						var formData = {
+
+								titre : $("#titre").val(),
+								description : $("#description").val(),
+								type : "FP",
+
+							equipes : [ {
+								id : $("#equipeId").val()
+
+							} ]
+						}
+
+					}
+					
+					
+
+					
+					console.log(formData);
+
+					var token = $('#_csrf').attr('content');
+					var header = $('#_csrf_header').attr('content');
+					console.log(token);
+					// DO POST
+					$.ajax({
+						type : "POST",
+						contentType : "application/json",
+						url : "/eNIA/fiche",
+						data : JSON.stringify(formData),
+						dataType : "html",
+
+						beforeSend : function(xhr) {
+							xhr.setRequestHeader(header, token);
+						},
+						success : function(result) {
+							console.log (values); 
+							if (result == true) {
+								$("#postResultDiv").html(
+										" OK Successfully Saved! <br>"
+												+ "---> Congrats !!"
+												+ "</p>");
+								$("#postResultMessageDiv").html("");
+
+								//	$("#postResultSuccess").show();
+
+							} else if (result == false) {
+								$("#postResultDiv").html("");
+
+								$("#postResultMessageDiv")
+										.html(
+												"<strong>Erreur, Ce matricule existe déjà</strong><br>");
+							} else {
+								$("#postResultDiv").html("");
+
+								$("#postResultMessageDiv")
+										.html(
+												"<strong>Il y a eu une erreur lors de la création</strong><br>");
+
+							}
+
+							console.log(result);
+						},
+						error : function(e) {
+
+							alert("Error!")
+							console.log("ERROR: ", e);
+						}
+					});
+
+				}
+
+				//https://grokonez.com/frontend/jquery-ajax-post-get-nested-objects-springboot-server		
+
+			});
+		</script>
+
+	</div>
+ 
+
+
+
+
+
+
+</body>
+
+</html>

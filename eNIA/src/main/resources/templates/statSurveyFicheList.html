@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymelaef.org"
+xmlns:layout="http://www.ultraq.nz/thymeleaf/layout"
+	layout:decorate="template">
+<head>
+  <meta charset="utf-8">
+ <meta id="_csrf" name="_csrf" th:content="${_csrf.token}" />
+<meta id="_csrf_header" name="_csrf_header"
+	th:content="${_csrf.headerName}" />
+ 
+<title>eNIA | Stats Customer Survey List</title>
+</head>
+
+<body>
+  
+  
+  <div layout:fragment="content1">
+ 	<br> <br>
+		<div class="container-fluid" th:if="${not #lists.isEmpty(listFiches)}">
+
+			<section class="row justify-content-center">
+
+ 
+ 
+ 
+ <form th:action="@{/admin/statSurvey}" class="form-inline my-2 my-lg-0">
+      <input th:value="${motCle}" name="motCle" class="form-control mr-sm-2" type="search" placeholder="Entrez un mot clé" aria-label="Search">
+      <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit">Rechercher</button>
+    </form>
+    <br>
+      <br>
+			<table class="table table-bordered">
+    <thead>
+        <tr>
+                      <th>ID</th>
+                      <th>shortLabel</th>
+                      <th>descriptionLabel</th> 
+                      <th>Statut</th>  
+                      <th>Détail</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr th:each="p : ${listFiches}">
+         <td th:text="${p.id}"></td>
+		 <td th:text="${p.titre}"></td>
+		 <td th:text="${p.dateDebut}"></td> 
+		 <td>Fermé</td> 
+		 <td>
+		 <a class="btn btn-secondary"  th:href="@{/admin/oneSurveyResultView(id=${p.id})}">Voir les résultats</a>
+		 </td>
+        </tr>
+    </tbody>
+</table>
+
+<!-- customers pagination -->
+<nav aria-label="Pagination" th:if="${listFiches.totalPages gt 0}">
+    <ul class="pagination justify-content-center font-weight-bold">
+        <li class="page-item" th:classappend="${listFiches.number eq 0} ? 'disabled'">
+            <a class="page-link"
+               th:href="@{/admin/statSurvey?page={id}(id=${listFiches.number lt 2 ? 1 : listFiches.number})}"
+               aria-label="Previous" title="Previous Page" data-toggle="tooltip">
+                <span aria-hidden="true">&laquo;</span>
+            </a>
+        </li>
+        <li class="page-item" th:classappend="${i eq listFiches.number + 1} ? 'active'"
+            th:each="i : ${#numbers.sequence( 1, listFiches.totalPages, 1)}">
+            <a class="page-link" th:href="@{/admin/statSurvey?page={id}(id=${i})}" th:text="${i}"
+               th:title="${'Page '+ i}" data-toggle="tooltip"></a>
+        </li>
+        <li class="page-item" th:classappend="${listFiches.number + 1 eq listFiches.totalPages} ? 'disabled'">
+            <a class="page-link"
+               th:href="@{/admin/statSurvey?page={id}(id=${listFiches.number + 2})}"
+               aria-label="Next" title="Next Page" data-toggle="tooltip">
+                <span aria-hidden="true">&raquo;</span>
+            </a>
+        </li>
+    </ul>
+</nav>
+
+ 
+
+			</section>
+
+
+
+
+ 
+
+
+		</div>
+		
+		
+		<div th:if="${#lists.isEmpty(listFiches)}">
+		
+  Nous n’avons trouvé aucune élément pour cette recherche
+					</div>
+		 
+
+</div>
+  
+
+ 
+    
+     
+ 
+ 
+ 
+ 
+ 
+
+</body>
+
+</html>

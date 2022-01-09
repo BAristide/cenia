@@ -1,0 +1,119 @@
+@import url('https://fonts.googleapis.com/css?family=Lato|Pacifico|Righteous|Roboto+Condensed|Ubuntu&display=swap');
+
+body {
+	padding: 0%;
+	margin: 0%;
+	font-family: 'Segoe UI';
+	
+	background-color: #F0F0F0;
+	
+}
+
+
+.bg-dark2{
+	background-color: #404070 !important;
+	olor: #CACACA !important;
+}
+
+ 
+.myFontIntroDesign { color: #CACACA; font-family: 'Segoe UI', sans-serif;
+ font-size: 18px; 
+ line-height: 24px; margin: 0 0 24px;
+ text-align: justify; text-justify: inter-word; }
+.roundedraduis{
+	border-radius: 10px; 
+}
+
+.myFontDesign { color: #000; font-family: 'Segoe UI', sans-serif;
+ font-size: 14px; 
+ line-height: 24px; margin: 0 0 24px;
+ text-align: justify; text-justify: inter-word; }
+.roundedraduis{
+	border-radius: 10px; 
+}
+.tabledef { 
+  width: 130px;
+  overflow: hidden;
+}
+.mySpeRiPadding{
+	
+	padding-right: 50px; 
+}
+
+.mySpeLefPadding{
+	
+	padding-left: 50px; 
+}
+.tableWidth{
+	width: 100%;
+}
+.tablecontent{
+	color : #1e1e1e; 
+	line-height: 1.5;
+	font-family: 'Segoe UI','Segoe UI Web';
+	
+	
+}
+
+.tabletotaldef { 
+  width: 200px;
+  overflow: hidden;
+}
+
+.myColor{
+	color: #9A95AE !important;
+}
+.navbar{
+
+	background-color: #404070;
+	}
+
+.navbar-brand{
+	font-family: 'Roboto Condensed'
+	font-size: 35px;
+	color: #9A95AE !important;
+	background-color: #404070;
+	}
+	
+.nav-link{
+	font-size: 16px; 
+	color: black !important;
+	font-family: 'Segoe UI';
+}
+
+.nav-link:hover{
+	color: #00E8E8;
+} 
+.noPadding{
+	padding: 0px;
+}
+
+nPadding{
+	padding: 5px;
+}
+
+.chatDecorate{
+	
+	 background: #e0e0f0;
+  text-align: right;
+  min-width: 45%;
+  padding: 10px 15px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  float: right;
+  right: 20px;
+  margin-bottom: 2px;
+}
+
+
+.tablex td, .tablex th {
+    padding: 0; 
+}
+  .container-fluid {
+ margin: 0px;
+ padding: 0px;
+ }
+@media screen and (max-width: 768px){
+	
+	
+}

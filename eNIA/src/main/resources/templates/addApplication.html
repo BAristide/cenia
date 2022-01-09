@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymelaef.org"
+xmlns:layout="http://www.ultraq.nz/thymeleaf/layout"
+	layout:decorate="template">
+<head>
+  <meta charset="utf-8">
+ <meta id="_csrf" name="_csrf" th:content="${_csrf.token}" />
+<meta id="_csrf_header" name="_csrf_header"
+	th:content="${_csrf.headerName}" />
+ 
+<title>eNIA | Nouvelle plateforme ou application</title>
+</head>
+
+<body>
+  
+  
+  <div layout:fragment="content1">
+ 	<br> <br>
+		<div class="container-fluid">
+
+			<section class="row justify-content-center">
+
+
+				<section class="col-12 col-sm-6 col-md-3">
+
+					<form>
+						<div class="form-group">
+							<label>Name</label> 
+			<input class="form-control"
+							type="text" id="name"  placeholder="Nom de la plateforme">
+
+						</div>
+	<div class="custom-control custom-radio custom-control-inline">
+    <input type="radio" class="custom-control-input" id="customRadio" name="classButton" value="gold">
+    <label class="custom-control-label" for="customRadio">Gold (24/7, SLA 99,99)</label>
+  </div>
+  
+  <br>
+  <br>
+  <div class="custom-control custom-radio custom-control-inline">
+    <input type="radio" class="custom-control-input" id="customRadio2" name="classButton" value="silver">
+    <label class="custom-control-label" for="customRadio2">Silver Gold (8/5, SLA 99,98)</label>
+  </div>
+					 
+		 <br>
+		  <br>			 
+
+						<button id="postRequest" class="btn btn-secondary  btn-block">Submit</button>
+					</form>
+
+                     <div id="postResultDiv" align="center"></div>
+			<div id="postResultMessageDiv" align="center"></div>
+				</section>
+
+
+			</section>
+
+
+
+
+ 
+
+
+		</div>
+		
+		
+		
+		
+	       <script th:inline="javascript">
+		$(function() { 
+			
+			 
+			
+			var token = $('#_csrf').attr('content');
+			var header = $('#_csrf_header').attr('content');
+			console.log(token);
+			// request SAVE service
+			$("#postRequest").click(function(event) {
+				// Prevent the form from submitting via the browser.
+				event.preventDefault();
+				
+				if($("#name").val()==''){
+					alert("Please fill the domaine field !");
+				}else{
+				 
+					 
+				 ajaxPost();
+				 
+				}
+				
+			});
+
+			function ajaxPost() {
+
+				// PREPARE FORM DATA
+				var formData = {
+						name : $("#name").val()
+				}
+				console.log(formData);
+
+				var token = $('#_csrf').attr('content');
+				var header = $('#_csrf_header').attr('content');
+				console.log(token);
+				// DO POST
+				$
+						.ajax({
+							type : "POST",
+							contentType : "application/json",
+							url : "/eNIA/addService",
+							data : JSON.stringify(formData),
+							dataType: "html",
+
+							beforeSend : function(xhr) {
+								xhr.setRequestHeader(header, token);
+							},
+						success : function(result) {
+
+							if (result == 'true') {
+								$("#postResultDiv").html(
+										" OK Successfully Saved! <br>"
+												+ "---> Congrats !!"
+												+ "</p>");
+								$("#postResultMessageDiv").html("");
+								$("#name").val('');
+								//	$("#postResultSuccess").show();
+
+							} else if (result == 'false') {
+								$("#postResultDiv").html("");
+
+								$("#postResultMessageDiv")
+										.html(
+												"<strong>Désolé cette Application existe déjà</strong><br>");
+							} else {
+								$("#postResultDiv").html("");
+
+								$("#postResultMessageDiv")
+										.html(
+												"<strong>Il y a eu une erreur lors de la création</strong><br>");
+
+							}
+
+							console.log(result);
+						},
+							error : function(e) {
+							 
+								alert("Error!")
+								console.log("ERROR: ", e);
+							}
+						});
+
+			}
+			
+	//------------------------------------------		
+ 
+			
+		});
+	</script>
+
+</div>
+  
+
+ 
+    
+     
+ 
+ 
+ 
+ 
+ 
+
+</body>
+
+</html>

@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymelaef.org">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+ 
+  <meta name="author" content="Bekroundjo Akoley Aristide"> 
+<link rel="stylesheet" type="text/css"   th:href="@{/webjars/bootstrap/4.1.3/css/bootstrap.min.css}"> 
+<link   rel="stylesheet" th:href="@{/css/fontawesome-free/css/all.min.css}"  >
+   <link rel="shortcut icon" th:href="@{/assets/icone.ico}">
+ 
+ <script th:src="@{/webjars/jquery/3.4.1/jquery.min.js}"></script> 
+  <script th:src="@{/vendor/bootstrap/js/bootstrap.bundle.min.js}"></script>
+
+  <!-- Core plugin JavaScript-->
+  <script th:src="@{/vendor/jquery-easing/jquery.easing.min.js}"></script>
+  <link   rel="stylesheet" th:href="@{/css/style.css}"  > 
+<title>eNIA | Information sur la plateforme</title>
+</head>
+
+<body>
+  <!-- Navigation -->
+   <nav class="navbar navbar-expand-lg   navbar-dark bg-dark  bg-dark2  ">
+    <div class="container">
+      <a class="navbar-brand" th:href="@{/}">eNIA</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        <span sec:authentication="name"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+        <li class="nav-item ">
+          <a class="nav-link myColor" th:href="@{?lang=en}">
+                    <img  th:src="@{/assets/us_flag.png}">&nbsp; &nbsp;<span class="myColor">English</span>
+                </a> </li>
+          <li class="nav-item myColor">
+       <a class="nav-link" th:href="@{?lang=fr}">
+                    <img  th:src="@{/assets/fr_flag.png}"> &nbsp; &nbsp;<span class="myColor">Français</span>
+                </a>
+          </li>
+           <li class="nav-item myColor">
+            <a class="nav-link" th:href="@{/info}">
+            <i class="fa fa-question-circle myColor" aria-hidden="true"></i> &nbsp;<span class="myColor">info</span></a>
+          </li>
+           
+          <li class="nav-item myColor">
+            <a class="nav-link" th:href="@{/user/adminDashBoard}">
+            <i class="fa fa-cogs myColor" aria-hidden="true"></i> &nbsp;<span class="myColor">Admin</span></a>
+          </li>
+           
+        </ul>
+      </div>
+    </div>
+  </nav>
+ 
+  <!-- Page Content -->
+  <div class="container-fluid">
+    
+    <img th:src="@{/assets/back_eniam.jpg}" class="img-fluid" alt="Responsive image">
+  
+  </div>
+  <div class="container">
+   
+  
+  
+  
+  <section>
+  <br>
+<hr>
+  <div class="card">
+   
+  <div class="card-body">
+    <h5 class="card-title">eNIA: le portail digital de gestion de l'information</h5>
+    <p class="card-text">eNIA est un portail web conçu pour les fournisseurs de services et les entreprises. Simple et facile d'utilisation, il permet de gérer dans une base centrale l'ensemble de vos communications. Augmenter la satisfaction clients en
+     communiquant sur les incidents et les problèmes dans un seul référentiel.</p>
+    
+  </div>
+</div>
+  
+  </section>
+  <br>
+ 
+  
+  
+  <div class="row row-cols-1 row-cols-md-2">
+  <div class="col mb-4">
+    <div class="card">
+      <img th:src="@{/assets/portail_client.png}" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">Un portail client</h5>
+        <p class="card-text">Vos clients internes ou externes peuvent voir vos communications. </p>
+      </div>
+    </div>
+  </div>
+  <div class="col mb-4">
+    <div class="card">
+      <img th:src="@{/assets/portail_admin.png}" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">Portail administrateur</h5>
+        <p class="card-text">Sur ce portail vous pouvez administrer de bout la plateforme. .</p>
+      </div>
+    </div>
+  </div>
+   
+   
+</div>
+<br>
+
+ 
+  <h5  >Les fonctionnalités</h5>
+  
+  
+  <hr>
+  
+  
+      <div class="card-deck">
+  <div class="card text-white bg-primary">
+     
+    <div class="card-body">
+       <h5 class="card-title">Portail clients</h5>
+    <p class="card-text">Les clients internes ou externes peuvent voir l'ensemble des incidents et problemes en cours qui impactent le service rendu.</p>
+    </div>
+  </div>
+  <div class="card text-white bg-primary">
+    
+    <div class="card-body">
+   <h5 class="card-title">Gestion des eMail</h5>
+    <p class="card-text">Une liste de diffusion des personnes par application peut etre configurée. eNIA notifie automatiquement en debut, durant les états d'avancement et la fin de l'incident les personnes concernées. </p>
+     </div>
+  </div>
+  <div class="card">
+ 
+    <div class="card-body text-white bg-primary">
+     <h5 class="card-title">Une base de connaissance</h5>
+    <p class="card-text">eNIA vous permet de referencer les solutions et solutions de contournement aux differents incidents et problemes de votre production.</p>
+    
+   </div>
+  </div>
+</div>
+  
+  <br>
+  
+  
+    <div class="card-deck">
+  <div class="card text-white bg-secondary ">
+     
+    <div class="card-body">
+    <h5 class="card-title">Accès rapide aux informations</h5>
+    <p class="card-text">eNIA vous propose un moteur de recherche globale afin d'acceder rapidement aux informations vouluent.</p>
+    </div>
+  </div>
+  <div class="card text-white bg-secondary ">
+    
+    <div class="card-body">
+    <h5 class="card-title">Gestion des profils</h5>
+    <p class="card-text">Un cloisonnement des profils utilisateurs afin de masquer les vues des utilisateurs.</p>
+     </div>
+  </div>
+  <div class="card">
+ 
+    <div class="card-body text-white bg-secondary ">
+      <h5 class="card-title">Tableaux de bord</h5>
+    <p class="card-text">eNIA fournit un tableau de bord simple pour suivre l'activité et la qualité de service délivré.</p>
+  </div>
+  </div>
+</div>
+    
+    
+    
+    </div>
+    
+ 
+    
+ 
+ 
+ 
+     <footer class="sticky-footer">
+        <div class="container my-auto">
+          <div class="copyright text-center my-auto">
+            <span>Copyright &copy; eNIA 2020</span>
+          </div>
+        </div>
+      </footer>
+ 
+   
+</body>
+
+</html>
