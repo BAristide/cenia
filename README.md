@@ -20,3 +20,10 @@ Cenia is a beautiful and powerful open source status page system.
 *Multi-lingual
 
 *Subscriber notifications via email
+
+# Requirements
+Java EE
+
+Spring boot
+
+A supported database: MySQL, PostgreSQL.
